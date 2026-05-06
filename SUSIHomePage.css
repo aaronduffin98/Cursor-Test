@@ -1,0 +1,645 @@
+/* ==========================================================================
+   SUSI Portal — Home Page Styles
+   Design system reference: design-system.json
+   Figma file: mFYpe9vwJP0VDVweAguday  |  Node: 3703:1056
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design tokens as CSS custom properties
+   Mirrors every value in design-system.json for runtime use
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand colours */
+  --color-brand-dark-pink:    #4f0828;
+  --color-brand-medium-pink:  #ab1a4d;
+  --color-brand-bright-pink:  #e50f71;
+  --color-brand-blue:         #82cfc9;
+
+  /* Semantic */
+  --color-error:              #e34b3f;
+
+  /* Neutral */
+  --color-white:              #ffffff;
+  --color-dark-grey:          #3d3d3d;
+  --color-light-grey:         #838383;
+  --color-border-light:       #e2e8f0;
+  --color-bg-light:           #f0f9f9;
+
+  /* Typography */
+  --font-primary:             'Myriad Pro', sans-serif;
+  --fw-regular:               400;
+  --fw-semibold:              600;
+  --fw-bold:                  700;
+  --fw-black:                 900;
+
+  --fs-xs:    8px;
+  --fs-sm:    13px;
+  --fs-base:  14px;
+  --fs-md:    16px;
+  --fs-lg:    18px;
+  --fs-xl:    20px;
+  --fs-2xl:   24px;
+  --fs-4xl:   40px;
+
+  /* Spacing */
+  --space-8:   8px;
+  --space-10:  10px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-18:  18px;
+  --space-23:  23px;
+  --space-24:  24px;
+  --space-28:  28px;
+  --space-34:  34px;
+  --space-36:  36px;
+  --space-40:  40px;
+  --space-48:  48px;
+  --space-50:  50px;
+  --space-76:  76px;
+
+  /* Border radius */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --sidebar-width: 236px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  background-color: var(--color-brand-dark-pink);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   Layout — outer shell
+   -------------------------------------------------------------------------- */
+.susi-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+.susi-sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background-color: var(--color-brand-dark-pink);
+  padding: var(--space-48) 0 var(--space-28);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-28);
+}
+
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
+.susi-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-28);
+  width: 100%;
+}
+
+.susi-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 12px var(--space-28);
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.susi-nav__item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.susi-nav__item--active {
+  background-color: var(--color-brand-medium-pink);
+  font-weight: var(--fw-bold);
+}
+
+.susi-nav__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+  align-self: center;
+}
+
+/* --------------------------------------------------------------------------
+   Main content area
+   -------------------------------------------------------------------------- */
+.susi-main {
+  flex: 1;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: var(--space-48);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.susi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.susi-header__logo {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+}
+
+.susi-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+/* Support number */
+.susi-header__support {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.susi-header__support-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.susi-header__support-label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  white-space: nowrap;
+}
+
+.susi-header__support-number {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--color-brand-dark-pink);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* Notification bell */
+.susi-header__notification {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.susi-header__bell {
+  width: 25px;
+  height: auto;
+}
+
+.susi-header__badge {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  border-radius: var(--radius-full);
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Vertical divider */
+.susi-header__divider {
+  width: 1px;
+  height: 36px;
+  background-color: var(--color-border-light);
+}
+
+/* User profile chip */
+.susi-header__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  background-color: var(--color-bg-light);
+  padding: var(--space-12);
+  border-radius: var(--radius-sm);
+}
+
+.susi-header__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.susi-header__profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.susi-header__profile-name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+  white-space: nowrap;
+}
+
+.susi-header__profile-role {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-light-grey);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Hero banner
+   -------------------------------------------------------------------------- */
+.susi-hero {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  padding: var(--space-50) var(--space-76);
+  overflow: hidden;
+}
+
+.susi-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.susi-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.susi-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.6) 54%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.susi-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+  max-width: 714px;
+}
+
+.susi-hero__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.susi-hero__subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-white);
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Button
+   -------------------------------------------------------------------------- */
+.susi-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-12);
+  background-color: var(--color-brand-medium-pink);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.susi-btn:hover {
+  background-color: var(--color-brand-dark-pink);
+}
+
+.susi-btn__arrow {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg) scaleY(-1);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Content row (application card + illustration + dates panel)
+   -------------------------------------------------------------------------- */
+.susi-content-row {
+  display: flex;
+  gap: var(--space-34);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.susi-content-row__left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-40);
+}
+
+/* --------------------------------------------------------------------------
+   Application card
+   -------------------------------------------------------------------------- */
+.susi-application-card {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--color-brand-dark-pink);
+  border-radius: var(--radius-md);
+  padding: var(--space-36);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-23);
+  color: var(--color-white);
+}
+
+.susi-application-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.susi-application-card__icon {
+  width: 24px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.susi-application-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.susi-application-card__body {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-white);
+  line-height: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+/* --------------------------------------------------------------------------
+   Student illustration
+   -------------------------------------------------------------------------- */
+.susi-illustration {
+  flex-shrink: 0;
+  width: 200px;
+  align-self: center;
+}
+
+.susi-illustration__figure {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   Important Dates panel
+   -------------------------------------------------------------------------- */
+.susi-dates-panel {
+  width: 370px;
+  min-width: 370px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-18);
+  min-height: 662px;
+}
+
+.susi-dates-panel__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.susi-dates-panel__icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.susi-dates-panel__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-black);
+  color: var(--color-brand-medium-pink);
+  white-space: nowrap;
+}
+
+/* Dates list */
+.susi-dates-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  width: 100%;
+}
+
+.susi-dates-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.susi-dates-list__label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-brand-dark-pink);
+  line-height: normal;
+}
+
+.susi-dates-list__date {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  line-height: normal;
+}
+
+.susi-dates-list__divider {
+  height: 1px;
+  background-color: var(--color-border-light);
+  width: 100%;
+}
+
+/* Panel footer */
+.susi-dates-panel__footer {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.susi-dates-panel__more-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.susi-dates-panel__more-link:hover {
+  color: var(--color-brand-medium-pink);
+}
+
+.susi-dates-panel__more-chevron {
+  width: 12px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — collapse sidebar on smaller screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .susi-layout {
+    flex-direction: column;
+  }
+
+  .susi-sidebar {
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    padding: var(--space-16) var(--space-24);
+    overflow-x: auto;
+  }
+
+  .susi-nav {
+    flex-direction: row;
+    gap: var(--space-8);
+  }
+
+  .susi-nav__item {
+    flex-shrink: 0;
+    height: 40px;
+    border-radius: var(--radius-sm);
+  }
+
+  .susi-main {
+    border-radius: 0;
+    padding: var(--space-24);
+  }
+
+  .susi-content-row {
+    flex-direction: column;
+  }
+
+  .susi-dates-panel {
+    width: 100%;
+    min-width: unset;
+    min-height: unset;
+  }
+
+  .susi-content-row__left {
+    flex-direction: column;
+  }
+
+  .susi-hero {
+    padding: var(--space-36) var(--space-28);
+    min-height: 220px;
+  }
+
+  .susi-hero__title {
+    font-size: var(--fs-2xl);
+  }
+}

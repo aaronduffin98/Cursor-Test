@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json.schemastore.org/design-tokens.json",
+  "metadata": {
+    "name": "SUSI Portal Design System",
+    "version": "1.0.0",
+    "description": "Design tokens extracted from the SUSI Figma file (mFYpe9vwJP0VDVweAguday). These tokens ensure visual consistency across all SUSI portal screens.",
+    "figmaFileKey": "mFYpe9vwJP0VDVweAguday",
+    "lastUpdated": "2026-05-06"
+  },
+  "colors": {
+    "brand": {
+      "darkPink": {
+        "value": "#4F0828",
+        "description": "SUSI Dark Pink — primary brand colour used for sidebar backgrounds, main cards, and dark headings",
+        "figmaName": "SUSI Dark Pink"
+      },
+      "mediumPink": {
+        "value": "#AB1A4D",
+        "description": "SUSI Medium Pink — used for active nav items, CTA buttons, and icon accents",
+        "figmaName": "SUSI Medium Pink"
+      },
+      "brightPink": {
+        "value": "#E50F71",
+        "description": "SUSI Bright Pink — high-emphasis accent, use sparingly",
+        "figmaName": "SUSI Bright Pink"
+      },
+      "blue": {
+        "value": "#82CFC9",
+        "description": "SUSI Blue — secondary accent for positive states and supplementary UI",
+        "figmaName": "SUSI Blue"
+      }
+    },
+    "semantic": {
+      "error": {
+        "value": "#E34B3F",
+        "description": "Red — used for notification badges and error states",
+        "figmaName": "Red"
+      }
+    },
+    "neutral": {
+      "white": {
+        "value": "#FFFFFF",
+        "description": "Pure white — main content background and text on dark surfaces",
+        "figmaName": "White"
+      },
+      "darkGrey": {
+        "value": "#3D3D3D",
+        "description": "Dark Grey — primary body text colour on light backgrounds",
+        "figmaName": "Dark Grey"
+      },
+      "lightGrey": {
+        "value": "#838383",
+        "description": "Light grey text — used for secondary labels and supporting text",
+        "figmaName": "Light grey text"
+      },
+      "borderLight": {
+        "value": "#E2E8F0",
+        "description": "Light border colour — used for card and container borders"
+      },
+      "backgroundLight": {
+        "value": "#F0F9F9",
+        "description": "Very light teal — used for avatar / profile chip background"
+      }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": {
+        "value": "'Myriad Pro', sans-serif",
+        "description": "Primary typeface used throughout the SUSI portal"
+      },
+      "fallback": {
+        "value": "sans-serif",
+        "description": "System sans-serif fallback"
+      }
+    },
+    "fontWeights": {
+      "regular": { "value": 400, "figmaStyle": "Regular" },
+      "semibold": { "value": 600, "figmaStyle": "Semibold" },
+      "bold": { "value": 700, "figmaStyle": "Bold" },
+      "black": { "value": 900, "figmaStyle": "Black" }
+    },
+    "fontSizes": {
+      "xs":   { "value": "8px",  "description": "Badge / micro label" },
+      "sm":   { "value": "13px", "description": "Profile chip secondary text" },
+      "base": { "value": "14px", "description": "Navigation labels, support text" },
+      "md":   { "value": "16px", "description": "Sidebar nav items, button labels" },
+      "lg":   { "value": "18px", "description": "Body text, date entries, card copy" },
+      "xl":   { "value": "20px", "description": "Section headings (e.g. Important Dates)" },
+      "2xl":  { "value": "24px", "description": "Card primary headings (e.g. Start an application)" },
+      "4xl":  { "value": "40px", "description": "Hero headline" }
+    },
+    "lineHeights": {
+      "none":   { "value": 1,    "description": "Tight / display text" },
+      "normal": { "value": "normal" },
+      "body":   { "value": "21px", "description": "Used for multi-line card body text" }
+    },
+    "letterSpacing": {
+      "default": { "value": "0px" }
+    },
+    "styles": {
+      "heroHeading": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "40px",
+        "lineHeight": 1,
+        "letterSpacing": "0px",
+        "color": "#FFFFFF"
+      },
+      "cardHeading": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "24px",
+        "lineHeight": "21px",
+        "letterSpacing": "0px",
+        "color": "#FFFFFF"
+      },
+      "sectionHeading": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 900,
+        "fontSize": "20px",
+        "lineHeight": "normal",
+        "letterSpacing": "0px",
+        "color": "#AB1A4D"
+      },
+      "dateLabel": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "18px",
+        "lineHeight": "normal",
+        "letterSpacing": "0px",
+        "color": "#4F0828"
+      },
+      "bodyText": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "18px",
+        "lineHeight": 1,
+        "letterSpacing": "0px",
+        "color": "#3D3D3D",
+        "figmaName": "Body Text"
+      },
+      "navItem": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 600,
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "color": "#FFFFFF"
+      },
+      "navItemActive": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "color": "#FFFFFF"
+      },
+      "buttonLabel": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "color": "#FFFFFF"
+      },
+      "supportLabel": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "color": "#3D3D3D"
+      },
+      "supportLink": {
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "color": "#4F0828",
+        "textDecoration": "underline"
+      }
+    }
+  },
+  "spacing": {
+    "0":  { "value": "0px" },
+    "8":  { "value": "8px" },
+    "10": { "value": "10px" },
+    "12": { "value": "12px" },
+    "16": { "value": "16px" },
+    "18": { "value": "18px" },
+    "23": { "value": "23px" },
+    "24": { "value": "24px" },
+    "28": { "value": "28px" },
+    "34": { "value": "34px" },
+    "36": { "value": "36px" },
+    "40": { "value": "40px" },
+    "48": { "value": "48px" },
+    "50": { "value": "50px" },
+    "76": { "value": "76px" }
+  },
+  "borderRadius": {
+    "none":   { "value": "0px" },
+    "sm":     { "value": "8px",  "description": "Cards, main container, avatar chips" },
+    "md":     { "value": "16px", "description": "Application card" },
+    "full":   { "value": "9999px", "description": "Notification badge (circular)" }
+  },
+  "borders": {
+    "light": {
+      "width": "1px",
+      "style": "solid",
+      "color": "#E2E8F0",
+      "description": "Used on Important Dates container"
+    }
+  },
+  "layout": {
+    "sidebar": {
+      "width": "236px",
+      "backgroundColor": "#4F0828",
+      "paddingTop": "48px",
+      "paddingBottom": "28px",
+      "paddingX": "28px"
+    },
+    "mainContainer": {
+      "backgroundColor": "#FFFFFF",
+      "padding": "48px",
+      "borderRadius": "8px",
+      "gap": "36px"
+    },
+    "heroBanner": {
+      "paddingX": "76px",
+      "paddingY": "50px",
+      "height": "280px"
+    },
+    "importantDatesPanel": {
+      "width": "370px",
+      "padding": "24px",
+      "gap": "18px",
+      "height": "662px"
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "backgroundColor": "#AB1A4D",
+        "color": "#FFFFFF",
+        "padding": "12px",
+        "fontFamily": "'Myriad Pro', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "16px",
+        "borderRadius": "0px",
+        "description": "Primary CTA button — flat with no border radius"
+      }
+    },
+    "navItem": {
+      "default": {
+        "padding": "0 28px",
+        "gap": "12px",
+        "color": "#FFFFFF",
+        "fontWeight": 600,
+        "fontSize": "16px"
+      },
+      "active": {
+        "backgroundColor": "#AB1A4D",
+        "padding": "0 28px",
+        "height": "44px",
+        "fontWeight": 700
+      }
+    },
+    "notificationBadge": {
+      "backgroundColor": "#E34B3F",
+      "color": "#FFFFFF",
+      "size": "15.4px",
+      "fontSize": "8px",
+      "fontWeight": 700,
+      "borderRadius": "9999px"
+    },
+    "profileChip": {
+      "backgroundColor": "#F0F9F9",
+      "padding": "12px",
+      "borderRadius": "8px",
+      "gap": "12px",
+      "avatarSize": "36px"
+    },
+    "divider": {
+      "color": "#E2E8F0",
+      "thickness": "1px"
+    },
+    "applicationCard": {
+      "backgroundColor": "#4F0828",
+      "padding": "36px",
+      "gap": "23px",
+      "borderRadius": "16px",
+      "color": "#FFFFFF"
+    }
+  },
+  "assets": {
+    "fonts": {
+      "myriadPro": {
+        "description": "Myriad Pro is the primary typeface. Ensure this is loaded via @font-face or a licensed font service before rendering any SUSI UI."
+      }
+    }
+  }
+}
