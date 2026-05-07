@@ -263,10 +263,16 @@ ol {
   border-radius: var(--radius-full);
   width: 15px;
   height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   line-height: 1;
+  padding: 0;
+}
+
+.susi-header__badge-count {
+  display: block;
+  /* Optical centering for narrow numerals like "1". */
+  transform: translateX(0.4px);
 }
 
 /* Vertical divider */
@@ -316,8 +322,91 @@ ol {
 }
 
 /* --------------------------------------------------------------------------
+   USC state chips
+   -------------------------------------------------------------------------- */
+.susi-usc {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  width: fit-content;
+}
+
+.susi-usc-float {
+  position: fixed;
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(2px);
+}
+
+.susi-usc-float__grab {
+  border: 0;
+  background: transparent;
+  color: var(--color-light-grey);
+  cursor: grab;
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px;
+}
+
+.susi-usc-float__grab:active {
+  cursor: grabbing;
+}
+
+.susi-usc__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-light-grey);
+}
+
+.susi-usc__chip {
+  border: 1px solid var(--color-border-light);
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.susi-usc__chip:hover {
+  border-color: var(--color-brand-medium-pink);
+  color: var(--color-brand-medium-pink);
+  transform: translateY(-1px);
+}
+
+.susi-usc__chip--active {
+  background: var(--color-brand-medium-pink);
+  border-color: var(--color-brand-medium-pink);
+  color: var(--color-white);
+}
+
+.susi-usc__chip--active:hover {
+  background: var(--color-brand-dark-pink);
+  border-color: var(--color-brand-dark-pink);
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
    Hero banner
    -------------------------------------------------------------------------- */
+/* USC 1 apply page: hero + content row share one column aligned with main padding (matches card row width) */
+.susi-apply-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+  width: 100%;
+  min-width: 0;
+}
+
 .susi-hero {
   position: relative;
   width: 100%;
@@ -337,9 +426,19 @@ ol {
 
 .susi-hero__bg-img {
   width: 100%;
+  max-width: none;
   height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
   object-fit: cover;
-  object-position: center;
+  /* bias left so the full group stays in frame at wide aspect ratios (was shifting right and cropping people) */
+  object-position: 42% center;
+}
+
+@media (max-width: 1200px) {
+  .susi-hero__bg-img {
+    object-position: 48% center;
+  }
 }
 
 .susi-hero__overlay {
@@ -362,6 +461,12 @@ ol {
   max-width: 714px;
 }
 
+.susi-hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
 .susi-hero__title {
   font-family: var(--font-primary);
   font-size: var(--fs-4xl);
@@ -374,7 +479,7 @@ ol {
 .susi-hero__subtitle {
   font-family: var(--font-primary);
   font-size: var(--fs-lg);
-  font-weight: var(--fw-regular);
+  font-weight: 200;
   color: var(--color-white);
   line-height: 1;
 }
@@ -414,127 +519,13 @@ ol {
 }
 
 /* --------------------------------------------------------------------------
-   Content row (application card + illustration + dates panel)
+   USC 1 content row + cards
    -------------------------------------------------------------------------- */
 .susi-content-row {
   display: flex;
   gap: var(--space-34);
   align-items: flex-start;
   width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   Notification modal
-   -------------------------------------------------------------------------- */
-.susi-notification-modal__backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 140px var(--space-24) var(--space-24);
-  z-index: 1000;
-}
-
-.susi-notification-modal {
-  width: min(1200px, 100%);
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: var(--space-36);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-24);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-}
-
-.susi-notification-modal__header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-24);
-}
-
-.susi-notification-modal__title {
-  font-family: var(--font-primary);
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-bold);
-  color: var(--color-brand-medium-pink);
-  line-height: 1;
-}
-
-.susi-notification-modal__header-actions {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-8);
-}
-
-.susi-notification-modal__icon-btn {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  color: var(--color-dark-grey);
-  font-size: 24px;
-  line-height: 1;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.susi-notification-modal__intro {
-  font-family: var(--font-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  color: var(--color-dark-grey);
-  line-height: 21px;
-}
-
-.susi-notification-modal__message {
-  background-color: var(--color-bg-light);
-  padding: var(--space-24);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-}
-
-.susi-notification-modal__assessor {
-  font-family: var(--font-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  color: #000000;
-  line-height: 1;
-}
-
-.susi-notification-modal__message-row {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-16);
-}
-
-.susi-notification-modal__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.susi-notification-modal__message-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-  font-family: var(--font-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-regular);
-  color: #000000;
-  line-height: 1.2;
-}
-
-.susi-notification-modal__footer {
-  display: flex;
-  justify-content: center;
 }
 
 .susi-content-row__left {
@@ -545,9 +536,6 @@ ol {
   gap: var(--space-40);
 }
 
-/* --------------------------------------------------------------------------
-   Application card
-   -------------------------------------------------------------------------- */
 .susi-application-card {
   flex: 1;
   min-width: 0;
@@ -578,7 +566,6 @@ ol {
   font-weight: var(--fw-bold);
   color: var(--color-white);
   line-height: 21px;
-  white-space: nowrap;
 }
 
 .susi-application-card__body {
@@ -592,32 +579,6 @@ ol {
   gap: var(--space-10);
 }
 
-/* --------------------------------------------------------------------------
-   Student illustration
-   -------------------------------------------------------------------------- */
-.susi-illustration {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  align-self: center;
-  border: 8px solid var(--color-brand-blue);
-  border-radius: var(--radius-full);
-  background-color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.susi-illustration__figure {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* --------------------------------------------------------------------------
-   Important Dates panel
-   -------------------------------------------------------------------------- */
 .susi-dates-panel {
   width: 370px;
   min-width: 370px;
@@ -647,10 +608,8 @@ ol {
   font-size: var(--fs-xl);
   font-weight: var(--fw-black);
   color: var(--color-brand-medium-pink);
-  white-space: nowrap;
 }
 
-/* Dates list */
 .susi-dates-list {
   display: flex;
   flex-direction: column;
@@ -669,7 +628,6 @@ ol {
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   color: var(--color-brand-dark-pink);
-  line-height: normal;
 }
 
 .susi-dates-list__date {
@@ -677,7 +635,6 @@ ol {
   font-size: var(--fs-lg);
   font-weight: var(--fw-regular);
   color: var(--color-dark-grey);
-  line-height: normal;
 }
 
 .susi-dates-list__divider {
@@ -686,7 +643,6 @@ ol {
   width: 100%;
 }
 
-/* Panel footer */
 .susi-dates-panel__footer {
   flex: 1;
   display: flex;
@@ -702,19 +658,501 @@ ol {
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   color: var(--color-dark-grey);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.15s ease;
-}
-
-.susi-dates-panel__more-link:hover {
-  color: var(--color-brand-medium-pink);
 }
 
 .susi-dates-panel__more-chevron {
   width: 12px;
   height: 15px;
   flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard intro
+   -------------------------------------------------------------------------- */
+.susi-dashboard-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+
+.susi-dashboard-intro__top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+.susi-dashboard-intro__title {
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  line-height: 1;
+}
+
+.susi-dashboard-intro__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.susi-dashboard-intro__actions .susi-btn {
+  align-self: auto;
+  height: 50px;
+  padding: 0 var(--space-12);
+}
+
+.susi-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-10);
+  border: 3px solid #ffab00;
+  height: 50px;
+  padding: 0 var(--space-16);
+  color: #1e1e1e;
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.susi-status-chip__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background-color: #ffab00;
+  flex-shrink: 0;
+}
+
+.susi-dashboard-intro__bottom-row {
+  display: flex;
+  gap: var(--space-40);
+  align-items: center;
+}
+
+.susi-assessor-card {
+  position: relative;
+  flex: 1;
+  background-color: var(--color-brand-dark-pink);
+  border-radius: var(--radius-md);
+  padding: var(--space-36);
+  color: var(--color-white);
+}
+
+.susi-assessor-card::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  top: 34px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid var(--color-brand-dark-pink);
+}
+
+.susi-assessor-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.susi-assessor-card__mail-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.susi-assessor-card__header h2 {
+  font-size: var(--fs-2xl);
+  line-height: 21px;
+}
+
+.susi-assessor-card p {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  line-height: 21px;
+}
+
+.susi-grant-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.susi-grant-section__title {
+  font-size: 32px;
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  line-height: 1;
+}
+
+.susi-grant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: var(--space-36);
+}
+
+.susi-grant-card {
+  background-color: var(--color-white);
+  border: 3px solid #ebeae7;
+  padding: var(--space-36);
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.susi-grant-card:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-brand-medium-pink);
+  box-shadow: 0 4px 12px rgba(79, 8, 40, 0.22);
+}
+
+.susi-grant-card--warning {
+  border-color: #e5a6a1;
+}
+
+/* Warning cards: stronger error red on hover; keep lift shadow */
+.susi-grant-card.susi-grant-card--warning:hover {
+  border-color: var(--color-error);
+  box-shadow: 0 4px 12px rgba(79, 8, 40, 0.22);
+}
+
+.susi-grant-card__heading-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-brand-medium-pink);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+}
+
+.susi-grant-card__title {
+  margin-top: 4px;
+  color: var(--color-dark-grey);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+}
+
+.susi-grant-card__tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: var(--space-24);
+}
+
+.susi-grant-card__task {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.susi-grant-card__task-index {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-brand-medium-pink);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-black);
+  flex-shrink: 0;
+}
+
+.susi-grant-card__task-label {
+  flex: 1;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+}
+
+.susi-grant-card__task-label--error {
+  color: var(--color-error);
+}
+
+.susi-grant-card__task-status {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-brand-blue);
+  color: var(--color-brand-dark-pink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.susi-grant-card__task-status--error {
+  background: var(--color-error);
+  color: var(--color-white);
+}
+
+.susi-grant-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-24);
+}
+
+.susi-verified-chip {
+  border: 2px solid var(--color-brand-blue);
+  color: #1e1e1e;
+  padding: var(--space-10);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+}
+
+.susi-grant-card__action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-left: auto;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+}
+
+.susi-grant-card__action-arrow {
+  width: 12px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.susi-action-required-chip {
+  flex-shrink: 0;
+  background: #ffab00;
+  color: #1e1e1e;
+  padding: var(--space-8);
+  border-radius: 4px;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Notification modal
+   -------------------------------------------------------------------------- */
+.susi-notification-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-24);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.susi-notification-modal__backdrop--visible {
+  opacity: 1;
+}
+
+/* Outer shell has no transform — used to align scale origin with the bell in viewport */
+.susi-notification-modal-shell {
+  width: min(1200px, 100%);
+  max-width: 100%;
+  max-height: calc(100vh - 2 * var(--space-24));
+  overflow-y: auto;
+  margin-inline: auto;
+}
+
+.susi-notification-modal {
+  width: 100%;
+  background: var(--color-white);
+  border: 2px solid var(--color-brand-blue);
+  border-radius: var(--radius-md);
+  padding: var(--space-36);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: scale(0.06);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.18, 0.64, 1),
+    opacity 0.32s ease;
+  will-change: transform, opacity;
+}
+
+.susi-notification-modal--open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.susi-notification-modal--open.susi-notification-modal--leave {
+  transform: scale(0.06);
+  opacity: 0;
+  transition:
+    transform 0.34s cubic-bezier(0.55, 0.06, 0.68, 0.35),
+    opacity 0.26s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .susi-notification-modal,
+  .susi-notification-modal__backdrop {
+    transition: none !important;
+  }
+
+  .susi-notification-modal {
+    transform: none;
+    opacity: 1;
+  }
+
+  .susi-notification-modal--open.susi-notification-modal--leave {
+    transform: none;
+    opacity: 0;
+  }
+
+  .susi-notification-modal__backdrop--visible {
+    opacity: 1;
+  }
+}
+
+.susi-notification-modal__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+
+.susi-notification-modal__title {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-brand-dark-pink);
+  line-height: 1.2;
+}
+
+.susi-notification-modal__header-actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.susi-notification-modal__icon-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-dark-grey);
+  font-size: 24px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.susi-notification-modal__intro {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.susi-notification-modal__message-card {
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.susi-notification-modal__assessor-line {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.susi-notification-modal__message-body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.susi-notification-modal__message-body .susi-header__avatar {
+  flex-shrink: 0;
+}
+
+.susi-notification-modal__message-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.susi-notification-modal__message-text p {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.susi-notification-modal__message-text .susi-notification-modal__signoff {
+  font-weight: var(--fw-semibold);
+}
+
+.susi-notification-modal__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-8);
+}
+
+.susi-notification-modal__footer .susi-btn {
+  align-self: center;
+}
+
+.susi-notification-modal__cta {
+  border-radius: var(--radius-sm);
+  padding: var(--space-12) var(--space-24);
+  background-color: var(--color-brand-dark-pink);
+}
+
+.susi-notification-modal__cta:hover {
+  background-color: var(--color-brand-medium-pink);
+}
+
+/* --------------------------------------------------------------------------
+   Student illustration
+   -------------------------------------------------------------------------- */
+.susi-illustration {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  align-self: center;
+  border: 8px solid var(--color-brand-blue);
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.susi-illustration__figure {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* --------------------------------------------------------------------------
@@ -749,7 +1187,32 @@ ol {
     padding: var(--space-24);
   }
 
+  .susi-usc-float {
+    left: 10px !important;
+    top: 10px !important;
+  }
+
+  .susi-dashboard-intro__top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .susi-dashboard-intro__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+  }
+
+  .susi-dashboard-intro__bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .susi-content-row {
+    flex-direction: column;
+  }
+
+  .susi-content-row__left {
     flex-direction: column;
   }
 
@@ -759,21 +1222,20 @@ ol {
     min-height: unset;
   }
 
-  .susi-content-row__left {
-    flex-direction: column;
+  .susi-assessor-card {
+    width: 100%;
   }
 
-  .susi-hero {
-    padding: var(--space-36) var(--space-28);
-    min-height: 220px;
+  .susi-assessor-card::after {
+    display: none;
   }
 
-  .susi-hero__title {
-    font-size: var(--fs-2xl);
+  .susi-grant-grid {
+    grid-template-columns: 1fr;
   }
 
-  .susi-notification-modal__backdrop {
-    padding-top: var(--space-36);
+  .susi-grant-card {
+    min-height: auto;
   }
 
   .susi-notification-modal {
@@ -786,9 +1248,5 @@ ol {
 
   .susi-notification-modal__title {
     line-height: 1.1;
-  }
-
-  .susi-notification-modal__message-row {
-    flex-direction: column;
   }
 }

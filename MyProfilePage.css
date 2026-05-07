@@ -1,0 +1,443 @@
+/* My Profile — scoped styles (uses global design tokens from SUSIHomePage.css) */
+
+.susi-profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 100%;
+  min-width: 0;
+}
+
+.susi-profile__page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.susi-profile__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.susi-profile__lede {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-light-grey);
+  line-height: 1.45;
+  margin: 0;
+  max-width: 54rem;
+}
+
+.susi-profile__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-24);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.susi-profile__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.susi-profile__summary-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.susi-profile__name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.susi-profile__meta {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-light-grey);
+  margin: var(--space-8) 0 0;
+}
+
+.susi-profile__meta-sep {
+  margin: 0 var(--space-8);
+}
+
+.susi-profile__status {
+  color: var(--color-dark-grey);
+}
+
+.susi-profile__updated {
+  margin: 0;
+  flex-basis: 100%;
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  color: var(--color-light-grey);
+}
+
+@media (min-width: 720px) {
+  .susi-profile__updated {
+    flex-basis: auto;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .susi-profile__summary {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Sticky section navigation */
+.susi-profile__subnav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: var(--space-12) 0;
+  margin: 0;
+  background: linear-gradient(to bottom, var(--color-white) 72%, rgba(255, 255, 255, 0));
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.susi-profile__subnav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.susi-profile__subnav-link {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-brand-medium-pink);
+  text-decoration: none;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.susi-profile__subnav-link:hover {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-border-light);
+}
+
+.susi-profile__subnav-link:focus-visible {
+  outline: 2px solid var(--color-brand-medium-pink);
+  outline-offset: 2px;
+}
+
+.susi-profile__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+}
+
+/* Cards */
+.susi-profile-card {
+  scroll-margin-top: var(--space-48);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  padding: var(--space-24) var(--space-36);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.susi-profile-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.susi-profile-card__header-text {
+  flex: 1;
+  min-width: min(100%, 280px);
+}
+
+.susi-profile-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-dark-grey);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.susi-profile-card__badge {
+  display: inline-block;
+  margin-top: var(--space-8);
+  padding: var(--space-8) var(--space-10);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-brand-blue);
+  color: var(--color-dark-grey);
+  background: var(--color-white);
+}
+
+.susi-profile-card__badge--muted {
+  border-color: var(--color-border-light);
+  color: var(--color-light-grey);
+  background: var(--color-bg-light);
+}
+
+.susi-profile-card__intro {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  color: var(--color-light-grey);
+  margin: var(--space-12) 0 0;
+  line-height: 1.45;
+  max-width: 42rem;
+}
+
+.susi-profile-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.susi-profile-card__body {
+  min-width: 0;
+}
+
+.susi-profile-card__footnote {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  color: var(--color-light-grey);
+  margin: var(--space-16) 0 0;
+  line-height: 1.4;
+}
+
+/* Definition list grid */
+.susi-profile-dl {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.susi-profile-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: var(--space-8) var(--space-24);
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.susi-profile-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.susi-profile-row:first-child {
+  padding-top: 0;
+}
+
+@media (max-width: 640px) {
+  .susi-profile-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-12) 0;
+  }
+}
+
+.susi-profile-row__label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+  margin: 0;
+}
+
+.susi-profile-row__value {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.susi-profile-row__masked {
+  letter-spacing: 0.04em;
+}
+
+.susi-profile-row__hint {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-light-grey);
+  line-height: 1.35;
+}
+
+/* Buttons */
+.susi-profile-btn {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  padding: var(--space-12) var(--space-16);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.susi-profile-btn:focus-visible {
+  outline: 2px solid var(--color-brand-medium-pink);
+  outline-offset: 2px;
+}
+
+.susi-profile-btn--secondary {
+  border: 2px solid var(--color-brand-medium-pink);
+  background: var(--color-white);
+  color: var(--color-brand-medium-pink);
+}
+
+.susi-profile-btn--secondary:hover {
+  background: var(--color-bg-light);
+}
+
+.susi-profile-btn--primary {
+  border: none;
+  background: var(--color-brand-medium-pink);
+  color: var(--color-white);
+}
+
+.susi-profile-btn--primary:hover {
+  background: var(--color-brand-dark-pink);
+}
+
+/* Documents table */
+.susi-profile-table-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.susi-profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+}
+
+.susi-profile-table th,
+.susi-profile-table td {
+  text-align: left;
+  padding: var(--space-12) var(--space-16);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+
+.susi-profile-table th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+  background: var(--color-bg-light);
+}
+
+.susi-profile-table td {
+  color: var(--color-dark-grey);
+}
+
+.susi-profile-link-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-brand-medium-pink);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.susi-profile-link-btn:hover {
+  color: var(--color-brand-dark-pink);
+}
+
+.susi-profile-link-btn:focus-visible {
+  outline: 2px solid var(--color-brand-medium-pink);
+  outline-offset: 2px;
+}
+
+.susi-profile-pill {
+  display: inline-block;
+  padding: var(--space-8) var(--space-10);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  border-radius: var(--radius-sm);
+}
+
+.susi-profile-pill--success {
+  background: rgba(130, 207, 201, 0.35);
+  color: var(--color-brand-dark-pink);
+}
+
+.susi-profile-pill--pending {
+  background: rgba(255, 171, 0, 0.25);
+  color: #1e1e1e;
+}
+
+.susi-profile-pill--muted {
+  background: var(--color-bg-light);
+  color: var(--color-light-grey);
+}
+
+.susi-profile__footer-actions {
+  padding-top: var(--space-8);
+}
+
+.susi-profile__footer-note {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  color: var(--color-light-grey);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.susi-profile-inline-link {
+  color: var(--color-brand-medium-pink);
+  font-weight: var(--fw-semibold);
+}
+
+.susi-profile-inline-link:focus-visible {
+  outline: 2px solid var(--color-brand-medium-pink);
+  outline-offset: 2px;
+}
+
+.susi-profile-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
