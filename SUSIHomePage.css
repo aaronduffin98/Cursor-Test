@@ -144,11 +144,16 @@ ol {
   line-height: 1;
   color: var(--color-white);
   text-decoration: none;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .susi-nav__item:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--color-brand-blue);
+  color: #000000;
+}
+
+.susi-nav__item:hover .susi-nav__icon {
+  filter: brightness(0);
 }
 
 .susi-nav__item--active {
@@ -163,6 +168,7 @@ ol {
   object-fit: contain;
   display: block;
   align-self: center;
+  transition: filter 0.15s ease;
 }
 
 /* --------------------------------------------------------------------------
@@ -242,8 +248,20 @@ ol {
 .susi-header__notification-btn {
   border: 0;
   background: transparent;
-  padding: 0;
+  padding: 8px;
   cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.susi-header__notification-btn:hover,
+.susi-header__notification-btn:focus-visible {
+  background-color: var(--color-bg-light);
+  outline: none;
+}
+
+.susi-header__notification-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-brand-blue);
 }
 
 .susi-header__bell {
@@ -336,7 +354,10 @@ ol {
   z-index: 1200;
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-8);
+  row-gap: var(--space-8);
+  max-width: calc(100vw - 20px);
   padding: 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
@@ -484,6 +505,12 @@ ol {
   line-height: 1;
 }
 
+.susi-hero .susi-btn {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
 /* --------------------------------------------------------------------------
    Button
    -------------------------------------------------------------------------- */
@@ -508,7 +535,8 @@ ol {
 }
 
 .susi-btn:hover {
-  background-color: var(--color-brand-dark-pink);
+  background-color: var(--color-brand-blue);
+  color: #000000;
 }
 
 .susi-btn__arrow {
@@ -516,6 +544,13 @@ ol {
   height: 16px;
   transform: matrix(-1, 0, 0, 1, 0, 0) scaleX(-1);
   flex-shrink: 0;
+  position: relative;
+  top: -2px;
+  transition: filter 0.15s ease;
+}
+
+.susi-btn:hover .susi-btn__arrow {
+  filter: brightness(0);
 }
 
 /* --------------------------------------------------------------------------
@@ -565,18 +600,23 @@ ol {
   font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
   color: var(--color-white);
-  line-height: 21px;
+  line-height: 1;
+  transform: translateY(2px);
 }
 
 .susi-application-card__body {
   font-family: var(--font-primary);
   font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
+  font-weight: 500;
   color: var(--color-white);
   line-height: 21px;
   display: flex;
   flex-direction: column;
   gap: var(--space-10);
+}
+
+.susi-application-card .susi-btn__arrow {
+  margin-top: 0;
 }
 
 .susi-dates-panel {
@@ -608,6 +648,8 @@ ol {
   font-size: var(--fs-xl);
   font-weight: var(--fw-black);
   color: var(--color-brand-medium-pink);
+  line-height: 1;
+  transform: translateY(2px);
 }
 
 .susi-dates-list {

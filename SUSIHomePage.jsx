@@ -187,7 +187,11 @@ function Header({ onNotificationClick, notificationOpen, notificationBellRef }) 
 
 function PrototypeUscSwitcher({ mode, onChange, position, onDragStart }) {
   return (
-    <div className="susi-usc-float" style={{ left: position.x, top: position.y }} aria-label="Prototype use case switcher">
+    <div
+      className="susi-usc-float"
+      style={{ left: position.x, top: position.y }}
+      aria-label="Prototype tools — use case switcher and feedback"
+    >
       <button
         type="button"
         className="susi-usc-float__grab"
