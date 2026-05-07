@@ -239,6 +239,13 @@ ol {
   justify-content: center;
 }
 
+.susi-header__notification-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
 .susi-header__bell {
   width: 25px;
   height: auto;
@@ -402,7 +409,7 @@ ol {
 .susi-btn__arrow {
   width: 16px;
   height: 16px;
-  transform: rotate(180deg) scaleY(-1);
+  transform: matrix(-1, 0, 0, 1, 0, 0) scaleX(-1);
   flex-shrink: 0;
 }
 
@@ -414,6 +421,120 @@ ol {
   gap: var(--space-34);
   align-items: flex-start;
   width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Notification modal
+   -------------------------------------------------------------------------- */
+.susi-notification-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 140px var(--space-24) var(--space-24);
+  z-index: 1000;
+}
+
+.susi-notification-modal {
+  width: min(1200px, 100%);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-36);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.susi-notification-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.susi-notification-modal__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-brand-medium-pink);
+  line-height: 1;
+}
+
+.susi-notification-modal__header-actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.susi-notification-modal__icon-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-dark-grey);
+  font-size: 24px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.susi-notification-modal__intro {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-dark-grey);
+  line-height: 21px;
+}
+
+.susi-notification-modal__message {
+  background-color: var(--color-bg-light);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.susi-notification-modal__assessor {
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: #000000;
+  line-height: 1;
+}
+
+.susi-notification-modal__message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.susi-notification-modal__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.susi-notification-modal__message-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: #000000;
+  line-height: 1.2;
+}
+
+.susi-notification-modal__footer {
+  display: flex;
+  justify-content: center;
 }
 
 .susi-content-row__left {
@@ -477,12 +598,20 @@ ol {
 .susi-illustration {
   flex-shrink: 0;
   width: 200px;
+  height: 200px;
   align-self: center;
+  border: 8px solid var(--color-brand-blue);
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .susi-illustration__figure {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -641,5 +770,25 @@ ol {
 
   .susi-hero__title {
     font-size: var(--fs-2xl);
+  }
+
+  .susi-notification-modal__backdrop {
+    padding-top: var(--space-36);
+  }
+
+  .susi-notification-modal {
+    padding: var(--space-24);
+  }
+
+  .susi-notification-modal__header {
+    align-items: flex-start;
+  }
+
+  .susi-notification-modal__title {
+    line-height: 1.1;
+  }
+
+  .susi-notification-modal__message-row {
+    flex-direction: column;
   }
 }

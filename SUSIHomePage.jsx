@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SUSIHomePage.css";
 
 // ---------------------------------------------------------------------------
@@ -88,7 +88,7 @@ function Sidebar() {
   );
 }
 
-function Header() {
+function Header({ onNotificationClick, notificationOpen }) {
   return (
     <header className="susi-header">
       <img src={ASSETS.logo} alt="SUSI — Student Universal Support Ireland" className="susi-header__logo" />
@@ -102,10 +102,17 @@ function Header() {
         </div>
 
         {/* Notification bell */}
-        <div className="susi-header__notification" role="status" aria-label="1 notification">
+        <button
+          type="button"
+          className="susi-header__notification susi-header__notification-btn"
+          aria-label="Open notifications"
+          aria-haspopup="dialog"
+          aria-expanded={notificationOpen}
+          onClick={onNotificationClick}
+        >
           <img src={ASSETS.iconNotification} alt="Notifications" className="susi-header__bell" />
           <span className="susi-header__badge" aria-hidden="true">1</span>
-        </div>
+        </button>
 
         <div className="susi-header__divider" aria-hidden="true" />
 
@@ -119,6 +126,65 @@ function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function NotificationModal({ onClose }) {
+  return (
+    <div className="susi-notification-modal__backdrop" onClick={onClose}>
+      <div
+        className="susi-notification-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Message from assessor"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="susi-notification-modal__header">
+          <h2 className="susi-notification-modal__title">We found an issue with one of your documents</h2>
+          <div className="susi-notification-modal__header-actions">
+            <button type="button" className="susi-notification-modal__icon-btn" aria-label="Open in new view">
+              ↗
+            </button>
+            <button type="button" className="susi-notification-modal__icon-btn" aria-label="Close message" onClick={onClose}>
+              ×
+            </button>
+          </div>
+        </div>
+
+        <p className="susi-notification-modal__intro">
+          Our case office has reviewed your application and they have found an issue, they have provided a message
+          for you below, please read it carefully and complete the tasks required.
+        </p>
+
+        <div className="susi-notification-modal__message">
+          <p className="susi-notification-modal__assessor">John Doe, Assessor.</p>
+          <div className="susi-notification-modal__message-row">
+            <img src={ASSETS.userAvatar} alt="" aria-hidden="true" className="susi-notification-modal__avatar" />
+            <div className="susi-notification-modal__message-body">
+              <p>
+                Thank you for submitting your student grant application. During our review, we identified an issue
+                with one of the supporting documents provided. Specifically, the bank statement submitted for your
+                father is no longer valid, as it is dated more than three months prior to the application date.
+              </p>
+              <p>
+                To continue processing your application, we kindly ask that you upload a more recent bank statement
+                (dated within the last three months) for your father.
+              </p>
+              <p>
+                Please click the button below to update your documents. If you have any questions or need assistance,
+                our support team is here to help.
+              </p>
+              <p>Kind regards,</p>
+              <p>SUSI Assessment Team</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="susi-notification-modal__footer">
+          <button type="button" className="susi-btn susi-btn--pink">Update Documentation</button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -210,12 +276,30 @@ function ImportantDates() {
 // Page root
 // ---------------------------------------------------------------------------
 export default function SUSIHomePage() {
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isNotificationOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsNotificationOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isNotificationOpen]);
+
   return (
     <div className="susi-layout">
       <Sidebar />
 
       <main className="susi-main">
-        <Header />
+        <Header
+          onNotificationClick={() => setIsNotificationOpen(true)}
+          notificationOpen={isNotificationOpen}
+        />
         <HeroBanner />
 
         <div className="susi-content-row">
@@ -225,6 +309,10 @@ export default function SUSIHomePage() {
           </div>
           <ImportantDates />
         </div>
+
+        {isNotificationOpen && (
+          <NotificationModal onClose={() => setIsNotificationOpen(false)} />
+        )}
       </main>
     </div>
   );
